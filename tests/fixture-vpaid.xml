@@ -1,0 +1,16 @@
+<VAST version="3.0">
+  <Ad id="local-vpaid-fixture">
+    <InLine>
+      <AdSystem version="1">Vasty test</AdSystem>
+      <AdTitle>Local VPAID fixture</AdTitle>
+      <Impression></Impression>
+      <Creatives><Creative><Linear>
+        <Duration>00:00:30</Duration>
+        <MediaFiles>
+          <!-- The execution iframe resolves this URL against the app document. -->
+          <MediaFile delivery="progressive" type="application/javascript" apiFramework="VPAID" width="640" height="360">./tests/fixture-vpaid.js</MediaFile>
+        </MediaFiles>
+      </Linear></Creative></Creatives>
+    </InLine>
+  </Ad>
+</VAST>

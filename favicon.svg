@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="25 24 216 216" role="img" aria-label="Vasty icon">
+  <defs>
+    <linearGradient id="vGradLeft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4fd8ff"/>
+      <stop offset="100%" stop-color="#14a8e5"/>
+    </linearGradient>
+    <linearGradient id="vGradRight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dff8ff"/>
+      <stop offset="100%" stop-color="#33d9cf"/>
+    </linearGradient>
+    <linearGradient id="playGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#62f4ee"/>
+      <stop offset="100%" stop-color="#33d9cf"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <polygon points="35,44 80,44 129,146 129,219" fill="url(#vGradLeft)"/>
+  <polygon points="221,44 178,44 129,146 129,219" fill="url(#vGradRight)"/>
+  <polygon points="103,88 103,145 151,116" fill="url(#playGrad)"/>
+  <path d="M161 157 H189 L196 136 L206 169 L216 157 H232"
+        fill="none" stroke="#c6f53c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+</svg>

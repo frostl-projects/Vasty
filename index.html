@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Vasty</title>
+  <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=0.6.2">
+  <script src="https://cdn.jsdelivr.net/gh/radiantmediaplayer/rmp-vast@v17.2.0/externals/hls/hls.min.js" integrity="sha384-EjzEuKbktrNTFpMLJKr9CPbBQjdi3b+hSp3X+IRM9bPcgMfyRD2Exd/FaoxjcTpS" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/radiantmediaplayer/rmp-vast@v17.2.0/dist/rmp-vast.min.js" integrity="sha384-mykhkVM80JIkJpSnzrnwGVIVB4GZVU6rDZqUezIfM7clMN1dQT6AJd5URp1aSEMe" crossorigin="anonymous"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand-row">
+        <h1>Vasty</h1>
+      </div>
+      <div id="environment" class="environment" aria-label="Окружение браузера"></div>
+    </header>
+
+    <section class="workspace">
+      <div class="card input-card">
+        <div class="card-head">
+          <div class="segmented" role="group" aria-label="Режим ввода">
+            <button class="segment active" data-mode="xml" type="button">VAST XML</button>
+            <button class="segment" data-mode="url" type="button">VAST URL</button>
+          </div>
+          <button id="sampleButton" class="ghost" type="button">Загрузить пример</button>
+        </div>
+
+        <textarea id="vastInput" spellcheck="false" aria-label="VAST XML" placeholder="Вставь сюда <VAST>…</VAST>"></textarea>
+        <input id="vastUrl" class="url-input hidden" type="url" placeholder="https://example.com/vast.xml" aria-label="VAST URL">
+
+        <div class="options">
+          <label><input id="enableVpaid" type="checkbox" checked> VPAID</label>
+          <label><input id="muted" type="checkbox" checked> Без звука</label>
+          <label><input id="controls" type="checkbox" checked> Элементы управления видео</label>
+        </div>
+
+        <div class="actions">
+          <button id="playButton" class="primary" type="button">▶ Запустить</button>
+          <button id="stopButton" type="button" disabled>Остановить</button>
+          <button id="analyzeButton" type="button">Только анализ</button>
+          <button id="clearVastButton" class="ghost" type="button">Очистить VAST</button>
+          <button id="clearButton" class="ghost" type="button">Очистить лог</button>
+        </div>
+      </div>
+
+      <div class="card player-card">
+        <div class="card-head">
+          <h2>Плеер</h2>
+          <span id="playerStatus" class="status idle">Ожидание</span>
+        </div>
+        <div class="stage-wrap">
+          <div class="rmp-container" id="vast-player">
+            <div class="rmp-content">
+              <video class="rmp-video" src="data:video/mp4;base64," playsinline muted disableRemotePlayback></video>
+            </div>
+          </div>
+        </div>
+        <dl id="runtimeFacts" class="facts"></dl>
+      </div>
+    </section>
+
+    <section class="diagnostics-grid">
+      <div class="card">
+        <div class="card-head">
+          <h2>Анализ VAST</h2>
+          <span id="analysisStatus" class="status idle">Не анализировался</span>
+        </div>
+        <div id="analysis" class="analysis empty">Вставь тег и нажми «Только анализ» или «Запустить».</div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Лог событий</h2>
+          <div>
+            <button id="copyLogButton" class="ghost small" type="button">Копировать</button>
+            <button id="downloadLogButton" class="ghost small" type="button">Скачать ZIP</button>
+          </div>
+        </div>
+        <div id="eventLog" class="event-log"><div class="empty">Событий пока нет.</div></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- This order is required: core creates window.Vasty; app publishes its API;
+       transition publishes the function consumed by layout; export loads last. -->
+  <script src="./vasty-core.js?v=0.6.2"></script>
+  <script src="./app.js?v=0.6.2"></script>
+  <script src="./vpaid-compat.js?v=0.6.2"></script>
+  <script src="./vpaid-transition-compat.js?v=0.6.2"></script>
+  <script src="./vpaid-layout-compat.js?v=0.6.2"></script>
+  <script src="./report-export.js?v=0.6.2"></script>
+</body>
+</html>

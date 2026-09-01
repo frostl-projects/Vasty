@@ -1,0 +1,10 @@
+<VAST version="3.0">
+  <Ad id="local-wrapper-fixture">
+    <Wrapper>
+      <AdSystem version="1">Vasty test</AdSystem>
+      <VASTAdTagURI>./fixture-vpaid.xml</VASTAdTagURI>
+      <Impression></Impression>
+      <Creatives></Creatives>
+    </Wrapper>
+  </Ad>
+</VAST>
